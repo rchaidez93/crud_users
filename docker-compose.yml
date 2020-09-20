@@ -1,0 +1,18 @@
+version: "3"
+services:
+  mongo:
+    image: mongo:3.2.4
+    container_name: "mongo"
+    volumes:
+      - mongo:/data/db
+    ports:
+      - 27017:27017
+  app:
+    image: java/demo
+    ports:
+      - 8080:8080
+    links:
+      - mongo
+
+volumes:
+  mongo:
